@@ -1,5 +1,10 @@
 # Welcome to Remix!
 
+```shellscript
+npm i -g pnpm
+pnpm install
+pnpm run local
+```
 
 ## Development
 
