@@ -6,16 +6,21 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 import "./tailwind.css";
-
 import type { LinksFunction } from "@remix-run/node";
 
+// Combine links into a single export
 export const links: LinksFunction = () => {
   return [
     {
-      rel: 'icon',
-      href: '/CatalystFavicon.png',
-      type: 'image/png',
+      rel: "icon",
+      href: "/CatalystFavicon.png",
+      type: "image/png",
     },
+    {
+      rel: "stylesheet",
+      href: "https://fonts.googleapis.com/css2?family=Open+Dyslexic&display=swap'",
+    },
+    { rel: "icon", href: "/CatalystFavicon.png", type: "image/png" },
   ];
 };
 
@@ -28,7 +33,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="font-open-dyslexic">
         {children}
         <ScrollRestoration />
         <Scripts />
