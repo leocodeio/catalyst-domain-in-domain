@@ -1,4 +1,15 @@
+import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import { Form } from "@remix-run/react";
 import Header from "~/components/common/header";
+
+export const loader = async ({ request }: LoaderFunctionArgs) => {
+  return null;
+};
+
+export const action = async ({ request }: ActionFunctionArgs) => {
+  return null;
+};
+
 
 const Home: React.FC = () => {
   return (
@@ -8,7 +19,7 @@ const Home: React.FC = () => {
 
       {/* Main Content */}
       <main className="flex h-80  flex-col items-center justify-center mt-20 space-x-4">
-        <div className="flex flex-row space-x-4">
+        <Form className="flex flex-row space-x-4">
           {/* Search Input */}
           <input
             type="text"
@@ -20,7 +31,7 @@ const Home: React.FC = () => {
           <button className="custom-shadow px-6 py-4 bg-white text-gray-800 rounded-md hover:bg-gray-100">
             Search
           </button>
-        </div>
+        </Form>
       </main>
     </div>
   );
