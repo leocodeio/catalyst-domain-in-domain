@@ -1,6 +1,7 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { Form } from "@remix-run/react";
-import Header from "~/components/common/header";
+import { useState } from "react";
+import NavHeader from "~/components/common/nav_header";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return null;
@@ -10,16 +11,16 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-
 const Home: React.FC = () => {
+  const [isLogged, setIsLogged] = useState(false);
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
-      <Header />
+      <NavHeader isLogged={isLogged} />
 
       {/* Main Content */}
       <main className="flex h-80  flex-col items-center justify-center mt-20 space-x-4">
-        <Form className="flex flex-row space-x-4">
+        <Form method="post" className="flex flex-row space-x-4">
           {/* Search Input */}
           <input
             type="text"
@@ -28,7 +29,10 @@ const Home: React.FC = () => {
           />
 
           {/* About Us Button */}
-          <button className="custom-shadow px-6 py-4 bg-white text-gray-800 rounded-md hover:bg-gray-100">
+          <button
+            type="submit"
+            className="custom-shadow px-6 py-4 bg-white text-gray-800 rounded-md hover:bg-gray-100"
+          >
             Search
           </button>
         </Form>

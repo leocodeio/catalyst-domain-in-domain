@@ -11,7 +11,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   return null;
 };
 
-export default function signin() {
+export default function signup() {
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
@@ -34,17 +34,22 @@ export default function signin() {
           placeholder="password..."
           className="custom-shadow p-4 w-96 rounded-md bg-white text-left placeholder-gray-400 m-0"
         />
-        {/* Login Button */}
+        <input
+          type="password"
+          placeholder="reenter password..."
+          className="custom-shadow p-4 w-96 rounded-md bg-white text-left placeholder-gray-400 m-0"
+        />
+        {/* Signup Button */}
         <div className="w-full flex flex-row space-x-4 items-center justify-center gap-4">
+          <Link className="text-black hover:text-gray-400 ml-4" to="/signin">
+            <p className="font-medium">Login</p>
+          </Link>
           <button
             type="submit"
             className="custom-shadow px-6 py-4 bg-white text-gray-800 rounded-md hover:bg-gray-100"
           >
-            Login
+            Signup
           </button>
-          <Link className="text-black hover:text-gray-400 ml-4" to="/signup">
-            <p className="font-medium">Signup</p>
-          </Link>
         </div>
       </Form>
     </div>
