@@ -16,7 +16,7 @@ datasource db {
 model User {
   id          String            @id @default(uuid()) @map("_id") // Use UUID instead of AutoIncrement
   password    String
-  userName    String
+  userName    String             @unique
   domainPairs UserDomainPair[]   // One-to-many relation with UserDomainPair
   createdAt   DateTime           @default(now())
   updatedAt   DateTime           @updatedAt
