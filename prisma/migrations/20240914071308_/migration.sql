@@ -21,5 +21,8 @@ CREATE TABLE "UserDomainPair" (
     CONSTRAINT "UserDomainPair_pkey" PRIMARY KEY ("_id")
 );
 
+-- CreateIndex
+CREATE UNIQUE INDEX "User_userName_key" ON "User"("userName");
+
 -- AddForeignKey
 ALTER TABLE "UserDomainPair" ADD CONSTRAINT "UserDomainPair_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("_id") ON DELETE CASCADE ON UPDATE CASCADE;
