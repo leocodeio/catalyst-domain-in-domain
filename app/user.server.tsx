@@ -7,7 +7,7 @@ export async function createUser(createUserPayload: {
   confirmPassword: string;
 }): Promise<any> {
   const { userName, password, confirmPassword } = createUserPayload;
-  console.log("createUserPayload", createUserPayload);
+  // console.log("createUserPayload", createUserPayload);
   if (password !== confirmPassword) {
     const output = { data: null, msg: "password mismatch", code: "400" };
     return JSON.parse(JSON.stringify(output));
@@ -51,14 +51,14 @@ export async function getUser(getUserPaylod: {
     if (user.password === password) {
       const response = {
         data: user,
-        msg: "user fetched successfully!!",
+        msg: `welcome back!! ${user.userName}`,
         code: "200",
       };
       return JSON.parse(JSON.stringify(response));
     } else {
       const response = {
         data: null,
-        msg: "password mismatch",
+        msg: "wrong password",
         code: "400",
       };
       return JSON.parse(JSON.stringify(response));

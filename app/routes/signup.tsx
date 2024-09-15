@@ -25,7 +25,7 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   const createUserPayload = { userName, password, confirmPassword };
 
   const response = await createUser(createUserPayload); // Assuming this returns {data, code, msg}
-  console.log("response at signup call", response);
+  // console.log("response at signup call", response);
   return response;
 };
 
