@@ -7,6 +7,7 @@ export async function createUser(createUserPayload: {
   confirmPassword: string;
 }): Promise<any> {
   const { userName, password, confirmPassword } = createUserPayload;
+  console.log("createUserPayload", createUserPayload);
   if (password !== confirmPassword) {
     const output = { data: null, msg: "password mismatch", code: "400" };
     return JSON.parse(JSON.stringify(output));

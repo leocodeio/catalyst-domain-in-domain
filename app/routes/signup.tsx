@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, Link, useActionData, useNavigate } from "@remix-run/react";
+import { Form, Link, useActionData } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
 import Alerts from "~/components/common/alerts";
@@ -34,27 +34,26 @@ export default function Signup() {
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [alert, setAlert] = useState<{ code: string; msg: string } | null>(null);
-  const navigate = useNavigate();
-
+  const [alert, setAlert] = useState<{
+    code: string;
+    msg: string;
+    random: number;
+  } | null>(null);
   useEffect(() => {
     if (actionData) {
       const { data, code, msg } = actionData;
 
       // Set the alert state when actionData is received
-      setAlert({ code, msg });
+      setAlert({ code, msg, random: Math.random() });
 
       if (data) {
         // Clear form fields on successful sign-up
         setConfirmPassword("");
         setPassword("");
         setUserName("");
-
-        // Optionally navigate to the sign-in page
-        // navigate("/signin");
       }
     }
-  }, [actionData, navigate]);
+  }, [actionData]);
 
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
@@ -62,7 +61,9 @@ export default function Signup() {
       <Header />
 
       {/* Conditionally render Alerts */}
-      {alert && <Alerts code={alert.code} msg={alert.msg} />}
+      {alert && (
+        <Alerts code={alert.code} msg={alert.msg} random={alert.random} />
+      )}
 
       <Form
         method="post"
