@@ -22,7 +22,12 @@ export const action = async ({ request }: ActionFunctionArgs) => {
   // console.log("response at signin call", response);
 
   const { data, code, msg } = response;
+  // console.log("data at signin call", data);
+  // console.log("code at signin call", code);
+  // console.log("msg at signin call", msg);
+  // console.log(data.id)
   if (code === "200") {
+    // console.log("session is getting created");
     let createUserSessionPayload = {
       request,
       userId: data.id,

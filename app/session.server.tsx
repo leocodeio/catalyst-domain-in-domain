@@ -2,7 +2,7 @@
 import { createCookieSessionStorage, redirect } from "@remix-run/node"; // or cloudflare/deno
 
 type SessionData = {
-  userId: string;
+  userId: string | null;
 };
 
 type SessionFlashData = {
@@ -16,7 +16,7 @@ const { getSession, commitSession, destroySession } =
       name: "__session",
 
       // all of these are optional
-      domain: "remix.run",
+      // domain: "remix.run",
       // Expires can also be set (although maxAge overrides it when used in combination).
       // Note that this method is NOT recommended as `new Date` creates only one date on each server deployment, not a dynamic date in the future!
       //
@@ -30,11 +30,7 @@ const { getSession, commitSession, destroySession } =
     },
   });
 
-export function getUserSession(getUserSessionPayload: {
-  request: Request;
-  userId: string;
-}) {
-  const { request, userId } = getUserSessionPayload;
+export async function getUserSession(request: Request) {
   return getSession(request.headers.get("Cookie"));
 }
 
@@ -52,4 +48,18 @@ export async function createUserSession(getUserSessionPayload: {
     },
   });
 }
+
+export async function destroyUserSession(getUserSessionPayload: {
+  request: Request;
+  redirectTo: string;
+}) {
+  const { request, redirectTo } = getUserSessionPayload;
+  const session = await getSession(request.headers.get("Cookie"));
+  return redirect(redirectTo, {
+    headers: {
+      "Set-Cookie": await destroySession(session),
+    },
+  });
+}
+
 export { getSession, commitSession, destroySession };

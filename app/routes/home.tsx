@@ -1,22 +1,37 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form } from "@remix-run/react";
-import { useState } from "react";
+import { Form, useLoaderData } from "@remix-run/react";
 import NavHeader from "~/components/common/nav_header";
+import { destroyUserSession, getUserSession } from "~/session.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
-  return null;
+  const session = await getUserSession(request);
+  // console.log("session data at home page", session.data);
+  // console.log(session.data)
+
+  let response: {
+    userId: string | null;
+  } = { userId: null };
+  const userId = session.get("userId");
+  // console.log("userId at home page", userId);
+  if (userId) {
+    response = { userId: userId };
+  }
+  return response;
 };
 
 export const action = async ({ request }: ActionFunctionArgs) => {
-  return null;
+  const session = await destroyUserSession({ request, redirectTo: "/home" });
+  return session;
 };
 
 const Home: React.FC = () => {
-  const [isLogged, setIsLogged] = useState(false);
+  const loaderDataResponse: { userId: string | null } = useLoaderData();
+  // console.log("loaderData at home page", loaderDataResponse);
+  const userId = loaderDataResponse.userId;
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
-      <NavHeader isLogged={isLogged} />
+      <NavHeader isLogged={userId === null ? false : true} />
 
       {/* Main Content */}
       <main className="flex h-80  flex-col items-center justify-center mt-20 space-x-4">
