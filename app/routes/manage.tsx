@@ -113,7 +113,7 @@ export default function Manage() {
                     value={domain.domainName}
                   />
                   <input
-                    type="text"
+                    type="url"
                     name="url"
                     value={domainStates[index].domainUrl}
                     disabled={!isEditing}

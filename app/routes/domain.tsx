@@ -104,7 +104,7 @@ export default function domain() {
           className="custom-shadow p-4 w-96 rounded-md bg-white text-left placeholder-gray-400 m-0"
         />
         <input
-          type="test"
+          type="url"
           placeholder="domain url..."
           name="url"
           value={domainUrl}
