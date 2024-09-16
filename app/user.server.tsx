@@ -73,12 +73,36 @@ export async function getUser(getUserPaylod: {
   }
 }
 
+export async function getUserById(userId: string | undefined) {
+  const user = await prisma.user.findUnique({
+    where: {
+      id: userId,
+    },
+  });
+  if (user) {
+    const response = {
+      data: user,
+      msg: `user found!!`,
+      code: "200",
+    };
+    return JSON.parse(JSON.stringify(response));
+  } else {
+    const response = {
+      data: null,
+      msg: "user not found",
+      code: "400",
+    };
+    return JSON.parse(JSON.stringify(response));
+  }
+}
+
 export async function updateUser(updateUserPayload: {
   userName: string;
   password: string;
   confirmPassword: string;
 }): Promise<any> {
   const { userName, password, confirmPassword } = updateUserPayload;
+  // console.log("updateUserPayload", updateUserPayload);
   if (password !== confirmPassword) {
     const output = { data: null, msg: "password mismatch", code: "400" };
     return JSON.parse(JSON.stringify(output));
