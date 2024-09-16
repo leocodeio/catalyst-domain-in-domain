@@ -25,7 +25,7 @@ model User {
 model UserDomainPair {
   id         String   @id @default(uuid()) @map("_id") // Use UUID instead of AutoIncrement
   userId     String   // Foreign key to User model
-  domainName String
+  domainName String   @unique
   domainUrl  String
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
