@@ -32,12 +32,26 @@ export async function addDomain(addDomainPayload: {
   }
 }
 
-export async function deleteDomain(domainName: string): Promise<any> {
+export async function deleteDomain(domainId: string): Promise<any> {
   const domain = await prisma.userDomainPair.delete({
     where: {
-      domainName,
+      id: domainId,
     },
   });
+  if (!domain) {
+    const response = {
+      data: null,
+      msg: "domain not found",
+      code: "400",
+    };
+    return JSON.parse(JSON.stringify(response));
+  }
+  const response = {
+    data: domain,
+    msg: "domain deleted successfully!!",
+    code: "200",
+  };
+  return JSON.parse(JSON.stringify(response));
 }
 
 export async function isDomainAvailable(domainName: string): Promise<any> {
@@ -68,6 +82,7 @@ export async function updateDomain(updateDomainPayload: {
   domainUrl: string;
 }): Promise<any> {
   const { domainName, domainUrl } = updateDomainPayload;
+  // console.log("updateUserPayload", updateDomainPayload);
   const domain = await prisma.userDomainPair.update({
     where: {
       domainName,

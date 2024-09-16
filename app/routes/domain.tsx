@@ -10,7 +10,7 @@ import NavHeader from "../components/common/nav_header";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import Header from "~/components/common/header";
 import { getUserSession } from "~/session.server";
-import { addDomain } from "~/domain.server";
+import { addDomain, getDomainUrl } from "~/domain.server";
 import { useEffect, useState } from "react";
 import Alerts from "~/components/common/alerts";
 
@@ -39,6 +39,15 @@ export const action = async ({ request }: ActionFunctionArgs) => {
     domainName: domain,
     domainUrl: url,
   };
+  const exists = await getDomainUrl(domain);
+  if (exists.code === "200") {
+    const response = {
+      data: null,
+      msg: "domain already exists",
+      code: "400",
+    }; 
+    return JSON.parse(JSON.stringify(response));
+  }
   const response = await addDomain(addDomainPayload);
   // console.log(response);
   return response;
