@@ -1,7 +1,15 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, redirect, useActionData, useLoaderData } from "@remix-run/react";
+import {
+  Form,
+  Link,
+  redirect,
+  useActionData,
+  useLoaderData,
+} from "@remix-run/react";
 import { useEffect, useState } from "react";
+import { IoMdArrowBack } from "react-icons/io";
 import Alerts from "~/components/common/alerts";
+import Header from "~/components/common/header";
 import NavHeader from "~/components/common/nav_header";
 import { getUserSession } from "~/session.server";
 import { getUserById, updateUser } from "~/user.server";
@@ -67,7 +75,7 @@ export default function profile() {
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
-      <NavHeader isLogged={true} />
+      <Header />
       <div className="flex flex-col mt-2 gap-4 items-start justify-center">
         <h2 className="text-black font-bold text-2xl">Hi!!!! {userName}</h2>
       </div>
@@ -78,7 +86,11 @@ export default function profile() {
 
       {/* Main Content */}
       <main className="flex h-80  flex-col items-center justify-center mt-20 space-x-4">
-        <Form method="post" className="flex flex-col items-center space-y-4">
+        <Form method="post" className="flex flex-col items-start space-y-4">
+          {/* Back Button */}
+          <Link className="text-black hover:text-gray-400" to="/home">
+            <IoMdArrowBack size={20} />
+          </Link>
           <input
             type="password"
             name="password"
@@ -97,12 +109,14 @@ export default function profile() {
           />
           <input type="hidden" name="userName" value={userName} />
           {/* About Us Button */}
-          <button
-            type="submit"
-            className="custom-shadow px-6 py-4 bg-white w-[100px] text-gray-800 rounded-md hover:bg-gray-100"
-          >
-            Reset
-          </button>
+          <div className="w-full flex flex-row space-x-4 items-center justify-center gap-4">
+            <button
+              type="submit"
+              className="custom-shadow px-6 py-4 bg-white text-gray-800 rounded-md hover:bg-gray-100"
+            >
+              Reset
+            </button>
+          </div>
         </Form>
       </main>
     </div>
