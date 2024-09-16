@@ -1,4 +1,4 @@
-import { Link } from "@remix-run/react";
+import { Form, Link, useNavigate } from "@remix-run/react";
 import { FiLogIn, FiLogOut, FiUser } from "react-icons/fi";
 import { useState } from "react";
 import { Menu, MenuItem } from "@mui/material";
@@ -9,9 +9,22 @@ export default function NavHeader({ isLogged }: { isLogged: boolean }) {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const navigate = useNavigate();
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  function handleAddDomain(): void {
+    navigate("/domain");
+  }
+
+  function handleProfile(): void {
+    navigate("/profile");
+  }
+
+  function handleManageDomain(): void {
+    navigate("/manage");
+  }
 
   return (
     <>
@@ -26,9 +39,14 @@ export default function NavHeader({ isLogged }: { isLogged: boolean }) {
             </Link>
           ) : (
             <>
-              <Link to="/signin" className="text-black hover:text-gray-400">
-                <FiLogOut size={24} />
-              </Link>
+              <Form method="post" className="flex flex-row space-x-4">
+                <button
+                  type="submit"
+                  className="text-black hover:text-gray-400"
+                >
+                  <FiLogOut size={24} />
+                </button>
+              </Form>
 
               <button
                 className="text-black hover:text-gray-400"
@@ -50,8 +68,9 @@ export default function NavHeader({ isLogged }: { isLogged: boolean }) {
                   "aria-labelledby": "basic-button",
                 }}
               >
-                <MenuItem onClick={handleClose}>Add domain</MenuItem>
-                <MenuItem onClick={handleClose}>Mange domains</MenuItem>
+                <MenuItem onClick={handleAddDomain}>Add domain</MenuItem>
+                <MenuItem onClick={handleManageDomain}>Mange domains</MenuItem>
+                <MenuItem onClick={handleProfile}>Profile</MenuItem>
               </Menu>
             </>
           )}

@@ -2,6 +2,7 @@ import { Form, Link } from "@remix-run/react";
 import { IoMdArrowBack } from "react-icons/io";
 import NavHeader from "../components/common/nav_header";
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
+import Header from "~/components/common/header";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   return null;
@@ -15,7 +16,7 @@ export default function domain() {
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
-      <NavHeader isLogged={true} />
+      <Header />
       <Form
         method="post"
         className="flex flex-col space-x-4 mt-20 gap-4 items-start justify-center"

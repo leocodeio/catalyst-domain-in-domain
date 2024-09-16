@@ -3,6 +3,7 @@ import { Link, useLoaderData, Form } from "@remix-run/react";
 import { IoMdArrowBack } from "react-icons/io";
 import NavHeader from "~/components/common/nav_header";
 import { useState } from "react";
+import Header from "~/components/common/header";
 
 // Simulated loader function - Replace with actual data fetching logic
 export const loader = async ({ request }: LoaderFunctionArgs) => {
@@ -36,7 +37,7 @@ export default function Manage() {
   return (
     <div className="flex flex-col items-center justify-start h-screen bg-yellow-400">
       {/* Header */}
-      <NavHeader isLogged={true} />
+      <Header />
 
       <div className="flex flex-col space-x-4 mt-20 gap-4 items-start justify-center">
         {/* Back Button */}
