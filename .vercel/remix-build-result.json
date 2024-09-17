@@ -1,0 +1,164 @@
+{
+  "buildManifest": {
+    "serverBundles": {
+      "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0": {
+        "id": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+        "file": "build/server/nodejs-eyJydW50aW1lIjoibm9kZWpzIn0/index.js",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    },
+    "routeIdToServerBundleId": {
+      "routes/profile": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/domain": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/manage": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/signin": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/signup": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/_index": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/home": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0"
+    },
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "app/root.tsx",
+        "config": {}
+      },
+      "routes/profile": {
+        "file": "app/routes/profile.tsx",
+        "id": "routes/profile",
+        "path": "profile",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/domain": {
+        "file": "app/routes/domain.tsx",
+        "id": "routes/domain",
+        "path": "domain",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/manage": {
+        "file": "app/routes/manage.tsx",
+        "id": "routes/manage",
+        "path": "manage",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/signin": {
+        "file": "app/routes/signin.tsx",
+        "id": "routes/signin",
+        "path": "signin",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/signup": {
+        "file": "app/routes/signup.tsx",
+        "id": "routes/signup",
+        "path": "signup",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/_index": {
+        "file": "app/routes/_index.tsx",
+        "id": "routes/_index",
+        "index": true,
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/home": {
+        "file": "app/routes/home.tsx",
+        "id": "routes/home",
+        "path": "home",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      }
+    }
+  },
+  "remixConfig": {
+    "appDirectory": "D:\\notxleo\\study\\desktop_folders\\leocodeio-ext\\catalyst-domain-in-domain\\app",
+    "basename": "/",
+    "buildDirectory": "D:\\notxleo\\study\\desktop_folders\\leocodeio-ext\\catalyst-domain-in-domain\\build",
+    "future": {
+      "v3_fetcherPersist": true,
+      "v3_relativeSplatPath": true,
+      "v3_throwAbortReason": true,
+      "unstable_singleFetch": false,
+      "unstable_lazyRouteDiscovery": false
+    },
+    "manifest": false,
+    "publicPath": "/",
+    "routes": {
+      "root": {
+        "path": "",
+        "id": "root",
+        "file": "root.tsx"
+      },
+      "routes/profile": {
+        "file": "routes/profile.tsx",
+        "id": "routes/profile",
+        "path": "profile",
+        "parentId": "root"
+      },
+      "routes/domain": {
+        "file": "routes/domain.tsx",
+        "id": "routes/domain",
+        "path": "domain",
+        "parentId": "root"
+      },
+      "routes/manage": {
+        "file": "routes/manage.tsx",
+        "id": "routes/manage",
+        "path": "manage",
+        "parentId": "root"
+      },
+      "routes/signin": {
+        "file": "routes/signin.tsx",
+        "id": "routes/signin",
+        "path": "signin",
+        "parentId": "root"
+      },
+      "routes/signup": {
+        "file": "routes/signup.tsx",
+        "id": "routes/signup",
+        "path": "signup",
+        "parentId": "root"
+      },
+      "routes/_index": {
+        "file": "routes/_index.tsx",
+        "id": "routes/_index",
+        "index": true,
+        "parentId": "root"
+      },
+      "routes/home": {
+        "file": "routes/home.tsx",
+        "id": "routes/home",
+        "path": "home",
+        "parentId": "root"
+      }
+    },
+    "serverBuildFile": "index.js",
+    "serverModuleFormat": "esm",
+    "ssr": true
+  },
+  "viteConfig": {
+    "build": {
+      "assetsDir": "assets"
+    }
+  }
+}
