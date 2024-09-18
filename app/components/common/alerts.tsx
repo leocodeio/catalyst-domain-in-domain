@@ -1,7 +1,6 @@
-import { AlertTitle } from "@mui/material";
-import Alert from "@mui/material/Alert";
-import Stack from "@mui/material/Stack";
-import { useState, useEffect } from "react";
+import { useState, useEffect, CSSProperties } from "react";
+
+type AlertCode = "200" | "400"; // Extend as needed
 
 export default function Alerts({
   msg,
@@ -9,16 +8,13 @@ export default function Alerts({
   random,
 }: {
   msg: string;
-  code: string;
+  code: AlertCode;
   random: number;
 }) {
-  const [visible, setVisible] = useState(true); // Use useState for visibility
+  const [visible, setVisible] = useState(true);
 
   useEffect(() => {
-    // Set the alert to be visible every time msg or code changes
     setVisible(true);
-
-    // Set a timeout to hide the alert after 3 seconds
     const timer = setTimeout(() => {
       setVisible(false);
     }, 3000);
@@ -27,28 +23,44 @@ export default function Alerts({
 
   if (!visible) return null;
 
+  const alertStyle: CSSProperties = {
+    width: "300px",
+    position: "absolute",
+    right: "20px",
+    top: "100px",
+    padding: "16px",
+    borderRadius: "8px",
+    zIndex: 1000,
+  };
+
+  const successStyle: CSSProperties = {
+    ...alertStyle,
+    backgroundColor: "#d4edda",
+    color: "#155724",
+    border: "1px solid #c3e6cb",
+  };
+
+  const errorStyle: CSSProperties = {
+    ...alertStyle,
+    backgroundColor: "#f8d7da",
+    color: "#721c24",
+    border: "1px solid #f5c6cb",
+  };
+
+  const alertTypes: Record<AlertCode, { style: CSSProperties; label: string }> =
+    {
+      "200": { style: successStyle, label: "Success" },
+      "400": { style: errorStyle, label: "Error" },
+    };
+
+  const currentAlert = alertTypes[code] || {
+    style: errorStyle,
+    label: "Unknown",
+  };
+
   return (
-    <Stack
-      sx={{
-        width: "30%",
-        position: "absolute",
-        right: 20,
-        top: 100,
-        zIndex: 1000,
-      }}
-      spacing={2}
-    >
-      {code === "200" && (
-        <Alert variant="outlined" severity="success">
-          <AlertTitle>Success</AlertTitle>
-          <b>{msg}</b>
-        </Alert>
-      )}
-      {code === "400" && (
-        <Alert variant="outlined" severity="error">
-          <b>{msg}</b>
-        </Alert>
-      )}
-    </Stack>
+    <div style={currentAlert.style}>
+      <strong>{currentAlert.label}:</strong> <b>{msg}</b>
+    </div>
   );
 }
