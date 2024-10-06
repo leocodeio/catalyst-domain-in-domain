@@ -13,14 +13,14 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: "icon",
-      href: "/CatalystFavicon.png",
+      href: "/favicon.ico",
       type: "image/png",
     },
     {
       rel: "stylesheet",
       href: "https://fonts.googleapis.com/css2?family=Open+Dyslexic&display=swap'",
     },
-    { rel: "icon", href: "/CatalystFavicon.png", type: "image/png" },
+    { rel: "icon", href: "/favicon.ico", type: "image/png" },
   ];
 };
 
