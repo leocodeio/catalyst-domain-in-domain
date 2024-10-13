@@ -91,9 +91,9 @@
     }
   },
   "remixConfig": {
-    "appDirectory": "D:\\notxleo\\study\\desktop_folders\\leocodeio-ext\\catalyst-domain-in-domain\\app",
+    "appDirectory": "C:\\Users\\saiha\\OneDrive\\Desktop\\Leo-new\\self\\leocodeio\\catalyst-domain-in-domain\\app",
     "basename": "/",
-    "buildDirectory": "D:\\notxleo\\study\\desktop_folders\\leocodeio-ext\\catalyst-domain-in-domain\\build",
+    "buildDirectory": "C:\\Users\\saiha\\OneDrive\\Desktop\\Leo-new\\self\\leocodeio\\catalyst-domain-in-domain\\build",
     "future": {
       "v3_fetcherPersist": true,
       "v3_relativeSplatPath": true,
