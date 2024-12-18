@@ -1,5 +1,5 @@
 import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
-import { Form, useActionData, useLoaderData } from "@remix-run/react";
+import { Form, Outlet, useActionData, useLoaderData } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import Alerts from "~/components/common/alerts";
 import NavHeader from "~/components/common/nav_header";
@@ -7,6 +7,8 @@ import { getDomainUrl } from "~/domain.server";
 import { destroyUserSession, getUserSession } from "~/session.server";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
+  const url = new URL(request.url);
+  console.log("url at home page", url);
   const session = await getUserSession(request);
   // console.log("session data at home page", session.data);
   // console.log(session.data)
@@ -73,7 +75,11 @@ const Home: React.FC = () => {
 
       {/* Conditionally render Alerts */}
       {alert && (
-        <Alerts  code={alert.code} msg={alert.msg} random={alert.random} />
+        <Alerts
+          code={alert.code as "200" | "400"}
+          msg={alert.msg || "Domain not found"} 
+          random={alert.random || Math.random()}
+        />
       )}
 
       {/* Main Content */}
@@ -99,6 +105,7 @@ const Home: React.FC = () => {
           </button>
         </Form>
       </main>
+      <Outlet />
     </div>
   );
 };
