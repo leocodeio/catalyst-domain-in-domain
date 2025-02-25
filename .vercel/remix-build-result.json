@@ -10,12 +10,13 @@
       }
     },
     "routeIdToServerBundleId": {
+      "routes/home.$domain": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/profile": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
+      "routes/_index": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/domain": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/manage": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/signin": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/signup": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
-      "routes/_index": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0",
       "routes/home": "nodejs-eyJydW50aW1lIjoibm9kZWpzIn0"
     },
     "routes": {
@@ -25,10 +26,28 @@
         "file": "app/root.tsx",
         "config": {}
       },
+      "routes/home.$domain": {
+        "file": "app/routes/home.$domain.tsx",
+        "id": "routes/home.$domain",
+        "path": ":domain",
+        "parentId": "routes/home",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
       "routes/profile": {
         "file": "app/routes/profile.tsx",
         "id": "routes/profile",
         "path": "profile",
+        "parentId": "root",
+        "config": {
+          "runtime": "nodejs"
+        }
+      },
+      "routes/_index": {
+        "file": "app/routes/_index.tsx",
+        "id": "routes/_index",
+        "index": true,
         "parentId": "root",
         "config": {
           "runtime": "nodejs"
@@ -70,15 +89,6 @@
           "runtime": "nodejs"
         }
       },
-      "routes/_index": {
-        "file": "app/routes/_index.tsx",
-        "id": "routes/_index",
-        "index": true,
-        "parentId": "root",
-        "config": {
-          "runtime": "nodejs"
-        }
-      },
       "routes/home": {
         "file": "app/routes/home.tsx",
         "id": "routes/home",
@@ -91,15 +101,17 @@
     }
   },
   "remixConfig": {
-    "appDirectory": "C:\\Users\\saiha\\OneDrive\\Desktop\\Leo-new\\self\\leocodeio\\catalyst-domain-in-domain\\app",
+    "appDirectory": "/home/leo/Desktop/leo-ext/self/leocodeio-ext/production/catalyst-domain-in-domain/app",
     "basename": "/",
-    "buildDirectory": "C:\\Users\\saiha\\OneDrive\\Desktop\\Leo-new\\self\\leocodeio\\catalyst-domain-in-domain\\build",
+    "buildDirectory": "/home/leo/Desktop/leo-ext/self/leocodeio-ext/production/catalyst-domain-in-domain/build",
     "future": {
       "v3_fetcherPersist": true,
       "v3_relativeSplatPath": true,
       "v3_throwAbortReason": true,
-      "unstable_singleFetch": false,
-      "unstable_lazyRouteDiscovery": false
+      "v3_routeConfig": false,
+      "v3_singleFetch": false,
+      "v3_lazyRouteDiscovery": false,
+      "unstable_optimizeDeps": false
     },
     "manifest": false,
     "publicPath": "/",
@@ -109,10 +121,22 @@
         "id": "root",
         "file": "root.tsx"
       },
+      "routes/home.$domain": {
+        "file": "routes/home.$domain.tsx",
+        "id": "routes/home.$domain",
+        "path": ":domain",
+        "parentId": "routes/home"
+      },
       "routes/profile": {
         "file": "routes/profile.tsx",
         "id": "routes/profile",
         "path": "profile",
+        "parentId": "root"
+      },
+      "routes/_index": {
+        "file": "routes/_index.tsx",
+        "id": "routes/_index",
+        "index": true,
         "parentId": "root"
       },
       "routes/domain": {
@@ -137,12 +161,6 @@
         "file": "routes/signup.tsx",
         "id": "routes/signup",
         "path": "signup",
-        "parentId": "root"
-      },
-      "routes/_index": {
-        "file": "routes/_index.tsx",
-        "id": "routes/_index",
-        "index": true,
         "parentId": "root"
       },
       "routes/home": {

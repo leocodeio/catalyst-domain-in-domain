@@ -1,45 +1,47 @@
-FROM node:20 AS builder
+# Build Stage
+FROM node:20-alpine AS builder
 
-# Install Node.js and npm
-RUN apt-get update && apt-get install -y \
-  curl \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+# Install build dependencies
+RUN apk add --no-cache openssl
 
-# Install pnpm globally
-RUN npm install -g pnpm
-
-# Set working directory
 WORKDIR /app
 
 # Copy package files
 COPY package.json pnpm-lock.yaml ./
 
-# Install dependencies
-RUN pnpm install
+# Install pnpm and dependencies
+RUN npm install -g pnpm && pnpm install --frozen-lockfile
 
-# Copy the rest of the application code
+# Copy source files
 COPY . .
 
-# Generate Prisma client and build the app
+# Generate Prisma client and build the application
 RUN pnpm prisma generate && pnpm build
 
-FROM node:20 AS runner
+# Prune development dependencies
+RUN pnpm prune --prod
+
+# Production Stage
+FROM node:20-alpine AS runner
 
 WORKDIR /app
 
-# Install pnpm in runner stage
-RUN npm install -g pnpm
-
-# Copy package files and dependencies
-COPY --from=builder /app/package.json ./
-COPY --from=builder /app/pnpm-lock.yaml ./
-COPY --from=builder /app/node_modules ./node_modules
+# Copy necessary files from builder
 COPY --from=builder /app/build ./build
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./
 COPY --from=builder /app/prisma ./prisma
 
-# Expose the port the app runs on
+# Generate Prisma Client for the target platform
+ENV NODE_ENV=production
+RUN npm install -g pnpm
+RUN pnpm install prisma --save-dev
+RUN pnpm prisma generate
+
+# Use non-root user for security
+USER node
+
 EXPOSE 3000
 
-# Start the Remix app
+# Use the start script from package.json
 CMD ["pnpm", "start"]
