@@ -4,12 +4,13 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "npx prisma generate && remix vite:build",
+    "build": "remix vite:build",
     "local": "remix vite:dev",
-    "dev": "npx prisma generate && remix vite:dev --host",
+    "dev": "remix vite:dev --host",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "start": "remix-serve ./build/server/index.js --port 3000",
-    "typecheck": "tsc"
+    "typecheck": "tsc",
+    "prisma": "npx prisma migrate dev && npx prisma generate"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
