@@ -1,6 +1,6 @@
 import { useState, useEffect, CSSProperties } from "react";
 
-type AlertCode = "200" | "400"; // Extend as needed
+export type AlertCode = "200" | "400"; // Extend as needed
 
 export default function Alerts({
   msg,

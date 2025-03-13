@@ -1,0 +1,9 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Only run release if commit is not from release process
+if ! git log -1 --pretty=%B | grep -q "chore(release)"; then
+  # Force CI=true to prevent dry-run mode
+  CI=true pnpm semantic-release
+  git push --follow-tags
+fi

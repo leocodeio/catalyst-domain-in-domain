@@ -2,7 +2,7 @@ import { ActionFunctionArgs, LoaderFunctionArgs } from "@remix-run/node";
 import { Form, Link, useActionData, useNavigate } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import { IoMdArrowBack } from "react-icons/io";
-import Alerts from "~/components/common/alerts";
+import Alerts, { AlertCode } from "~/components/common/alerts";
 import Header from "~/components/common/header";
 import { createUserSession } from "~/session.server";
 import { getUser } from "~/user.server";
@@ -71,7 +71,11 @@ export default function signin() {
 
       {/* Conditionally render Alerts */}
       {alert && (
-        <Alerts code={alert.code} msg={alert.msg} random={alert.random} />
+        <Alerts
+          code={alert.code as AlertCode}
+          msg={alert.msg}
+          random={alert.random}
+        />
       )}
 
       <Form

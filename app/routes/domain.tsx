@@ -12,7 +12,7 @@ import Header from "~/components/common/header";
 import { getUserSession } from "~/session.server";
 import { addDomain, getDomainUrl } from "~/domain.server";
 import { useEffect, useState } from "react";
-import Alerts from "~/components/common/alerts";
+import Alerts, { AlertCode } from "~/components/common/alerts";
 
 export const loader = async ({ request }: LoaderFunctionArgs) => {
   const session = await getUserSession(request);
@@ -85,7 +85,11 @@ export default function domain() {
       {/* Header */}
       <Header />
       {alert && (
-        <Alerts code={alert.code} msg={alert.msg} random={alert.random} />
+        <Alerts
+          code={alert.code as AlertCode}
+          msg={alert.msg}
+          random={alert.random}
+        />
       )}
       <Form
         method="post"
