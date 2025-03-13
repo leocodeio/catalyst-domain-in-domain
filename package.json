@@ -70,5 +70,6 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  }
+  },
+  "version": "1.0.0"
 }
