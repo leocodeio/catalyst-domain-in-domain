@@ -24,7 +24,6 @@
     "@remix-run/serve": "^2.16.0",
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
-    "@vercel/remix": "^2.15.3",
     "commitlint": "^19.7.1",
     "husky": "^9.1.7",
     "isbot": "^4.4.0",

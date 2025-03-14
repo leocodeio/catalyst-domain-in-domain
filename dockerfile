@@ -1,46 +1,45 @@
-# Build Stage
-FROM node:20-alpine AS builder
+# 🔹 Stage 1: Builder
+FROM node:23-alpine AS builder
 
-# Install build dependencies
+# Install dependencies
 RUN apk add --no-cache openssl
 
+# Set working directory
 WORKDIR /app
 
-# Copy package files
+# Copy package files first for better caching
 COPY package.json ./
 
-# Install npm and dependencies
-RUN npm install --no-frozen-lockfile
+# Install dependencies
+RUN npm install --frozen-lockfile
 
-# Copy source files
+# Copy application source code
 COPY . .
 
-# Generate Prisma client and build the application
+# Generate Prisma client & build application
 RUN npx prisma generate
 RUN npm run build
 
-# Prune development dependencies
-RUN npm prune --prod
+# Remove development dependencies to reduce image size
+RUN npm prune --production
 
-# Production Stage
-FROM node:20-alpine AS runner
+# 🔹 Stage 2: Runner
+FROM node:23-alpine AS runner
 
+# Set working directory
 WORKDIR /app
 
-# Copy necessary files from builder
+# Copy necessary built files from builder
 COPY --from=builder /app/build ./build
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./
 COPY --from=builder /app/prisma ./prisma
 
-# Generate Prisma Client for the target platform
-ENV NODE_ENV=production
-RUN npx prisma generate
-
 # Use non-root user for security
 USER node
 
+# Expose the required port
 EXPOSE 3000
 
-# Use the start script from package.json
-CMD ["npm", "run","start"]
+# Start application
+CMD ["npm", "run", "start"]
