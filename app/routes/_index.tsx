@@ -1,11 +1,15 @@
 import type { MetaFunction } from "@remix-run/node";
-import { Link } from "@remix-run/react";
+import { Link, redirect } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
     { title: "catalyst-domain-in-domain" },
     { name: "description", content: "Welcome to catalyst!" },
   ];
+};
+
+export const loader = async () => {
+  return redirect("/home");
 };
 
 export default function Index() {
