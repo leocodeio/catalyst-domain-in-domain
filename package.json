@@ -64,7 +64,7 @@
     "vite-tsconfig-paths": "^4.3.2"
   },
   "engines": {
-    "node": "23.x"
+    "node": ">=20.0.0"
   },
   "config": {
     "commitizen": {
