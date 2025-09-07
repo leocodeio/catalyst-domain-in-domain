@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.4...v1.0.5) (2025-09-07)
+
+
+### Performance Improvements
+
+* **rem:** rem ([3b6d8ee](https://github.com/leocodeio/catalyst-domain-in-domain/commit/3b6d8eeb1ded7e2ca4232c9a0d3acd90fb6f84ae))
+
 ## [1.0.4](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.3...v1.0.4) (2025-09-07)
 
 
