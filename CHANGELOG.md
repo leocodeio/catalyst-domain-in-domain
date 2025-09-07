@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.2...v1.0.3) (2025-09-07)
+
+
+### Performance Improvements
+
+* **version update:** version update ([b69ab73](https://github.com/leocodeio/catalyst-domain-in-domain/commit/b69ab736bf83f26ac6366e343acd9d6e364d5c40))
+
 ## [1.0.2](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.1...v1.0.2) (2025-09-07)
 
 
