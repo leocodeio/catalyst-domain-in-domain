@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.1...v1.0.2) (2025-09-07)
+
+
+### Performance Improvements
+
+* **updated code for revist portfolio:** updated code for revist portfolio ([0495f65](https://github.com/leocodeio/catalyst-domain-in-domain/commit/0495f65ebdb00ea014dd85e24349b8b21a2206cf))
+
 ## [1.0.1](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.0...v1.0.1) (2025-03-14)
 
 
