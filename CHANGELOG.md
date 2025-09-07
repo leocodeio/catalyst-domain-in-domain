@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.3...v1.0.4) (2025-09-07)
+
+
+### Performance Improvements
+
+* **vercel.json added:** vercel.json added ([5d9365f](https://github.com/leocodeio/catalyst-domain-in-domain/commit/5d9365f8e32e75e187c4c60e4c1c7f6e068e1bba))
+
 ## [1.0.3](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.2...v1.0.3) (2025-09-07)
 
 
