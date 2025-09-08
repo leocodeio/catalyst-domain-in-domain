@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.5...v1.0.6) (2025-09-08)
+
+
+### Performance Improvements
+
+* **dep check:** dep check ([d1998e1](https://github.com/leocodeio/catalyst-domain-in-domain/commit/d1998e15d15b8339c59e56490e876998c879c54e))
+
 ## [1.0.5](https://github.com/leocodeio/catalyst-domain-in-domain/compare/v1.0.4...v1.0.5) (2025-09-07)
 
 
