@@ -9,7 +9,7 @@
     "dev": "remix vite:dev --host",
     "start": "remix-serve ./build/server/index.js --port 3000",
     "prisma:local": "npx prisma generate",
-    "prisma": "npx prisma migrate dev",
+    "prisma": "npx prisma generate && npx prisma migrate dev",
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "typecheck": "tsc",
     "prepare": "husky",
